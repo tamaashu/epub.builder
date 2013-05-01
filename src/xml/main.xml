@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<book>
+<part>
+  <title>part1</title>
+  <song>
+    <nr>1</nr>
+    <title>Dal 1</title>
+    <writer>Bob Dylan 1</writer>
+    <writtenInYear>Bob Dylan</writtenInYear>
+    <writtenInPlace>Bob Dylan</writtenInPlace>
+    <composer>Bob Dylan 2</composer>
+    <composedInYear>Bob Dylan</composedInYear>
+    <composedInPlace>Bob Dylan</composedInPlace>
+    <originalLanguage>German</originalLanguage>
+    <translator>Bob Dylan</translator>
+    <translatedInYear>Bob Dylan</translatedInYear>
+    <translatedInPlace>Bob Dylan</translatedInPlace>
+    <verses>
+      <verse>
+        <line>line11</line>
+        <line>line12</line>
+      </verse>
+      <verse>
+        <line>line13</line>
+      </verse>
+    </verses>
+  </song>
+  <song>
+    <nr>2</nr>
+    <title>Dal 2</title>
+    <writer>Bob Dylan 11</writer>
+    <writtenInYear>Bob Dylan</writtenInYear>
+    <writtenInPlace>Bob Dylan</writtenInPlace>
+    <composer>Bob Dylan 21</composer>
+    <composedInYear>Bob Dylan</composedInYear>
+    <composedInPlace>Bob Dylan</composedInPlace>
+    <originalLanguage>German</originalLanguage>
+    <translator>Bob Dylan</translator>
+    <translatedInYear>Bob Dylan</translatedInYear>
+    <translatedInPlace>Bob Dylan</translatedInPlace>
+    <verses>
+      <verse>
+        <line>line21</line>
+        <line>line22</line>
+      </verse>
+      <verse>
+        <line>line23</line>
+      </verse>
+    </verses>
+  </song>
+</part>
+<part>
+  <title>part2</title>
+  <song>
+    <nr>3</nr>
+    <title>Dal 3</title>
+    <writer>Bob Dylan 3</writer>
+    <writtenInYear>Bob Dylan</writtenInYear>
+    <writtenInPlace>Bob Dylan</writtenInPlace>
+    <composer>Bob Dylan 3</composer>
+    <composedInYear>Bob Dylan</composedInYear>
+    <composedInPlace>Bob Dylan</composedInPlace>
+    <originalLanguage>German</originalLanguage>
+    <translator>Bob Dylan</translator>
+    <translatedInYear>Bob Dylan</translatedInYear>
+    <translatedInPlace>Bob Dylan</translatedInPlace>
+    <verses>
+      <verse>
+        <line>line31</line>
+        <line>line32</line>
+      </verse>
+      <verse>
+        <line>line33</line>
+      </verse>
+    </verses>
+  </song>
+</part>
+</book>

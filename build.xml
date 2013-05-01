@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="e-book.master" default="default" basedir=".">
+    <!--import file="nbproject/build-impl.xml"/-->
+    <description>Builds, tests, and runs the project.</description>
+    <target name="default" depends="clean,dist" description="Build whole project." />
+
+    <target name="init" description="Init config.">
+        <echo>Init</echo>
+        <property file="config/build.properties"/>
+    </target>
+
+    <target name="clean-build" depends="init" description="Clean up.">
+        <delete dir="${build.dir}"/>
+        <available file="${build.dir}" property="status.clean-build-failed" type="dir"/>
+    </target>
+
+    <target depends="clean-build" if="status.clean-build-failed" name="check-clean-build">
+        <echo message="Warning: unable to delete some files in ${build.dir} - they are probably locked. "/>
+    </target>
+
+    <target name="clean-dist" depends="init" description="Clean up.">
+        <delete dir="${dist.dir}"/>
+        <available file="${dist.dir}" property="status.clean-dist-failed" type="dir"/>
+    </target>
+
+    <target depends="clean-dist" if="status.clean-dist-failed" name="check-clean-dist">
+        <echo message="Warning: unable to delete some files in ${dist.dir} - they are probably locked. "/>
+    </target>
+
+    <target name="clean" depends="clean-build,check-clean-build,clean-dist,check-clean-dist" description="Clean up." />
+
+    <target name="build" depends="init" description="Build whole project.">
+        <echo>Build</echo>
+        <condition property="has.no.sources">
+            <or>
+                <not>
+                     <available file="${src.dir}"/>
+                </not>
+            </or>
+        </condition>
+        <fail if="has.no.source">
+              Please put your sources in directory ${src.dir}.
+        </fail>
+        <mkdir dir="${build.dir}"/>
+        <copy todir="${build.dir}">
+            <fileset dir="${src.dir}" includes="*"/>
+        </copy>
+        
+        <property name="xsl" location="${xsl.dir}/main.xsl"/>
+        <property name="xml" location="${xml.dir}/main.xml"/>
+	<property name="html" location="${build.dir}/main.html"/>
+	       
+        <exec executable="${xslt.processor}">
+            <arg value="-o"/>
+            <arg value="${html}"/>
+            <arg value="${xsl}"/>
+            <arg value="${xml}"/>
+        </exec>
+        <!-- xsltproc -o output.html x.xslt x.xml-->
+    </target>
+
+    <target name="dist" depends="init,build" description="Dist whole project.">
+        <echo>Dist</echo>
+        <condition property="has.no.build">
+            <or>
+                <not>
+                     <available file="${build.dir}"/>
+                </not>
+            </or>
+        </condition>
+        <fail if="has.no.build">
+              Please build before dist.
+        </fail>
+        <mkdir dir="${dist.dir}"/>
+        <zip basedir="${build.dir}" destfile="${dist.epub}" />
+    </target>
+</project>

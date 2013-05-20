@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <book>
+  <title>booktitle</title>
+  <publisher>book's publisher</publisher>
+  <language>en</language>
+  <creator>book's creator</creator>
+  <isbn>1234</isbn>
+  <date>2003-10-31T23:00:00+00:00</date>
 <part>
+  <nr>1</nr>
   <title>part1</title>
   <song>
     <nr>1</nr>
@@ -50,6 +57,7 @@
   </song>
 </part>
 <part>
+  <nr>2</nr>
   <title>part2</title>
   <song>
     <nr>3</nr>

@@ -45,18 +45,46 @@
         <copy todir="${build.dir}">
             <fileset dir="${src.dir}" includes="*"/>
         </copy>
-        
-        <property name="xsl" location="${xsl.dir}/main.xsl"/>
-        <property name="xml" location="${xml.dir}/main.xml"/>
-	<property name="html" location="${build.dir}/main.html"/>
-	       
+
+	<property name="main.xsl" location="${xsl.dir}/main.xsl"/>
+	<property name="toc.xsl" location="${xsl.dir}/toc.xsl"/>
+	<property name="content.xsl" location="${xsl.dir}/content.xsl"/>
+	<property name="main.xml" location="${xml.dir}/main.xml"/>
+	<property name="main.html" location="${build.dir}/main.html"/>
+	<property name="toc.ncx" location="${build.dir}/toc.ncx"/>
+	<property name="content.opf" location="${build.dir}/content.opf"/>
+
         <exec executable="${xslt.processor}">
             <arg value="-o"/>
-            <arg value="${html}"/>
-            <arg value="${xsl}"/>
-            <arg value="${xml}"/>
+            <arg value="${main.html}"/>
+            <arg value="${main.xsl}"/>
+            <arg value="${main.xml}"/>
         </exec>
         <!-- xsltproc -o output.html x.xslt x.xml-->
+
+        <exec executable="${xslt.processor}">
+            <arg value="-o"/>
+            <arg value="${toc.ncx}"/>
+            <arg value="${toc.xsl}"/>
+            <arg value="${main.xml}"/>
+        </exec>
+        <!-- xsltproc -o output.html x.xslt x.xml-->
+
+        <tstamp>
+          <format property="DATE" pattern="YYYY-MM-dd"/>
+          <format property="TIME" pattern="HH:mm:ss zzz"/>
+        </tstamp>
+        <exec executable="${xslt.processor}">
+            <arg value="-stringparam"/>
+            <arg value="datetime"/>
+            <arg value="${DATE}T${TIME}"/>
+            <arg value="-o"/>
+            <arg value="${content.opf}"/>
+            <arg value="${content.xsl}"/>
+            <arg value="${main.xml}"/>
+        </exec>
+        <!-- xsltproc -o output.html x.xslt x.xml-->
+
     </target>
 
     <target name="dist" depends="init,build" description="Dist whole project.">
